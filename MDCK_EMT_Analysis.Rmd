@@ -42,7 +42,7 @@ library(ade4)
 
 Data for analysis has been pre-processed using snakemake. The relevant workflow can be found at [https://github.com/JCSMR-Tremethick-Lab/H2AZ_EMT].
 
-The original R Markdown file used to produce this document can also be found at the address listed above.
+The original R Markdown file used to produce this document can be found at [https://github.com/skurscheid/MDCK_EMT_paper].
 
 # Figure 2 - Gene expression data from RNA-Seq experiment.
 
