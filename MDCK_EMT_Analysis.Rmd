@@ -1,21 +1,24 @@
 ---
-title: "The histone variant H2A.Z: a master regulator of the epithelial-mesenchymal
-  transition - Figures 2, 3 & 4"
+title: 'The histone variant H2A.Z: a master regulator of the epithelial-mesenchymal
+  transition - Figures 2, 3 & 4'
 author: "Sebastian Kurscheid - sebastian.kurscheid@anu.edu.au"
+header-includes: \pagenumbering{gobble}
 output:
-  pdf_document:
+  github_document:
+    html_preview: yes
     toc: yes
-    toc_depth: 5
+    toc_depth: 1
   html_document:
     toc: yes
     toc_depth: 5
   html_notebook: default
-  github_document:
-    html_preview: yes
+  pdf_document:
     toc: yes
-    toc_depth: 5
+    toc_depth: 1
+mainfont: Helvetica
 classoption: letter
 ---
+
 
 ```{r,eval=T, echo=F}
 library(knitr)
@@ -275,8 +278,7 @@ axisTextSize <- 8
 
 ```
 
-### Plotting
-#### Figure 3 A & B
+## Figure 3 A & B - ChIP-Seq metagene coverage plots
 ```{r Figure_3_plotting_1, cache = TRUE, echo = T, tidy=TRUE}
 nBins <- nrow(plotDataWT[grep("down", plotDataWT$geneset),])
 wtPlotDown <- ggplot(plotDataWT[grep("down", plotDataWT$geneset),], aes(bin, value)) + 
@@ -587,9 +589,9 @@ ggsave(grob1, filename = "Figure3_AB.pdf", height = 10.5/2, width = 8.5, units =
 
 ```
 
-#### Figure 3 C, D & E
+## Figure 3 C, D & E - Differential coverage and correlation plots
 
-##### Data preparation
+### Data preparation
 ```{r Figure_3_CDE_data_preparation_1, cache = TRUE, echo = T, tidy=TRUE, messages = F}
 g_legend<-function(a.gplot){
   tmp <- ggplot_gtable(ggplot_build(a.gplot))
@@ -688,7 +690,6 @@ minCor2 <- which.min(allCor$x.all2.estimate) ; allCor[which.min(allCor$x.all2.es
 maxCor2 <- which.max(allCor$x.all2.estimate) ; allCor[which.max(allCor$x.all2.estimate),]
 ```
 
-##### Plotting
 
 ```{r Figure_3_CDE_plotting, cache = TRUE, echo = T, tidy=TRUE}
 # plot of Spearman correlation between differential expression and --------
@@ -771,8 +772,7 @@ grob2 <- gridExtra::grid.arrange(grobs = gs,
                      widths = c(1,10,10), heights = c(2.5,0.5,7.5,0.5))
 ```
 
-# Figure 4 
-## Panels A & B
+# Figure 4 A & B - ChIP-Seq single gene coverage plots
 
 ``` {r, Figure_4_panels_AB, cache = TRUE, echo = T, tidy=TRUE}
 # coverage plot for TGFB1
@@ -846,7 +846,7 @@ plotEPCAM <- plotEPCAM + theme(legend.position = "none")
 plotEPCAM
 ```
 
-##### Plotting/writing output
+#### Plotting/writing output
 ```{r, pdf_output_figure3_4, eval = F, echo = T}
 ggsave(grob2, filename = "Figure3_CDE.pdf", height = 10.5/2, width = 8.5, units = "in", useDingbats = F) 
 ggsave(plotEPCAM, filename = "Figure4_A.pdf", height = 10.3/3, width = 8.4/2, units = "in", useDingbats = F)
